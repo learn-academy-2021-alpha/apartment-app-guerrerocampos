@@ -14,7 +14,7 @@ class BrowseApartments extends Component {
             {this.props.apartments.map(apartment => {
               return (
                 <li key={apartment.id}>
-                  <NavLink to={`/aboutus/${apartment.id}`}>{apartment.street}</NavLink>
+                  <NavLink to={`/aboutthecomplex/${apartment.id}`}>{apartment.street}</NavLink>
                 </li>
               )
             })}

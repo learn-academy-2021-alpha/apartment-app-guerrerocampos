@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
-import { Button, Form, FormGroup, Label, Input } from 'reactstrap'
-import { Redirect } from "react-router-dom"
+import { Button, Form, FormGroup, Input, Label } from 'reactstrap'
+import { Redirect } from 'react-router-dom'
 
-class AddApartment extends Component {
+class EditListing extends Component{
   constructor(props){
     super(props)
     this.state = {
-      form: {
+      form:{
         street: "",
         city: "",
         state: "",
@@ -29,114 +29,120 @@ class AddApartment extends Component {
   }
 
   handleSubmit = () => {
-    this.props.createAddApartment(this.state.form)
+    this.props.UpdateListing(this.state.form, this.props.apartment.id)
     this.setState({ submitted: true })
   }
 
-  render() {
-    return (
-      <>
-        <h2>Add an Apartment for rent</h2>
+  render(){
+    return(
+      <React.Fragment>
+        <h2>Edit Your Listing</h2>
         <Form>
           <FormGroup>
-            <Label for="street">Street Address</Label>
+            <Label>Street Address</Label>
             <Input
               type="text"
-              name="Enter address"
-              value={ this.state.form.street }
+              name="street"
               onChange={ this.handleChange }
+              value={ this.state.form.street }
             />
           </FormGroup>
           <FormGroup>
-            <Label for="city">City</Label>
+            <Label>City</Label>
             <Input
               type="text"
               name="city"
-              value={ this.state.form.city }
               onChange={ this.handleChange }
+              value={ this.state.form.city }
             />
           </FormGroup>
           <FormGroup>
-            <Label for="state">State</Label>
+            <Label>State</Label>
             <Input
               type="text"
               name="state"
-              value={ this.state.form.state }
               onChange={ this.handleChange }
+              value={ this.state.form.state }
             />
           </FormGroup>
           <FormGroup>
-            <Label for="manager">Manager Name</Label>
+            <Label>Manager name</Label>
             <Input
               type="text"
               name="manager"
-              value={ this.state.form.manager }
               onChange={ this.handleChange }
+              value={ this.state.form.manager }
             />
           </FormGroup>
           <FormGroup>
-            <Label for="email">E-mail</Label>
+            <Label>e-mail</Label>
             <Input
               type="text"
               name="email"
-              value={ this.state.form.email }
               onChange={ this.handleChange }
+              value={ this.state.form.email }
             />
           </FormGroup>
           <FormGroup>
-            <Label for="price">Rental Price</Label>
+            <Label>Rental Price</Label>
             <Input
               type="text"
               name="price"
+              onChange={ this.handleChange }
               value={ this.state.form.price }
-              onChange={ this.handleChange }
             />
           </FormGroup>
           <FormGroup>
-            <Label for="bedrooms">Bedrooms</Label>
+            <Label>Bedrooms</Label>
             <Input
-              type="text"
+              type="number"
               name="bedrooms"
+              onChange={ this.handleChange }
               value={ this.state.form.bedrooms }
-              onChange={ this.handleChange }
             />
           </FormGroup>
           <FormGroup>
-            <Label for="bathrooms">Bathrooms</Label>
+            <Label>Bathrooms</Label>
             <Input
-              type="text"
+              type="number"
               name="bathrooms"
-              value={ this.state.form.bathrooms }
               onChange={ this.handleChange }
+              value={ this.state.form.bathrooms }
             />
           </FormGroup>
           <FormGroup>
-            <Label for="pets">Pets Allowed</Label>
+            <Label>Pets Allowed</Label>
             <Input
               type="text"
               name="pets"
-              value={ this.state.form.pets }
               onChange={ this.handleChange }
+              value={ this.state.form.pets }
             />
           </FormGroup>
           <FormGroup>
-            <Label for="image_url">Add Image url/link</Label>
+            <Label>Add Image url/link</Label>
             <Input
               type="text"
               name="image_url"
-              value={ this.state.form.image_url }
               onChange={ this.handleChange }
+              value={ this.state.form.image_url }
             />
           </FormGroup>
           <Button
+            name="submit"
+            color="secondary"
             onClick={ this.handleSubmit }
           >
-            Add new Listing
+            Edit Cat Profile
           </Button>
         </Form>
-        { this.state.submitted && <Redirect to="/browseapartments" /> }
-      </>
+        { this.state.submitted &&
+          <Redirect
+            to={ `/catshow/${this.props.cat.id}` }
+          />
+        }
+      </React.Fragment>
     )
   }
 }
-export default AddApartment
+export default EditListing

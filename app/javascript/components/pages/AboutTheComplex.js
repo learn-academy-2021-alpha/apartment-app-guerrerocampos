@@ -4,7 +4,7 @@ import React, { Component } from "react"
 import { NavLink } from 'react-router-dom'
 import { Button } from 'reactstrap'
 
-class AboutUs extends Component {
+class AboutTheComplex extends Component {
   render() {
     const apartment = this.props.apartment;
         console.log(apartment)
@@ -35,4 +35,4 @@ class AboutUs extends Component {
   }
 }
 
-export default AboutUs
+export default AboutTheComplex

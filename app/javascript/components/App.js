@@ -7,7 +7,7 @@ import {
   Switch
 } from 'react-router-dom'
 
-import AboutUs from './pages/AboutUs'
+import AboutTheComplex from './pages/AboutTheComplex'
 import Home from './pages/Home'
 import AddApartment from './pages/AddApartment'
 import BrowseApartments from './pages/BrowseApartments'
@@ -55,12 +55,12 @@ class App extends React.Component {
           />
           <Route exact path="/" component={ Home } />
           <Route
-              path="/aboutus/:id"
+              path="/aboutthecomplex/:id"
               render={ (props) => {
                 let id = props.match.params.id
                 let apartment = this.state.apartments.find(apartment => apartment.id === parseInt(id))
                 return (
-                  <AboutUs
+                  <AboutTheComplex
                     apartment={ apartment }
                   />
                 )
